@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function (Blueprint $table) {
-            $table->id('id_product');
-            $table->string('name', 64);
-            $table->string('description', 128);
-
-            $table->unsignedBigInteger('id_category');
-            $table->foreign('id_category')->references('id_category')->on('category');
-
-            $table->float('price');
-            $table->boolean('is_enabled');
-            $table->integer('count');
-            $table->integer('count_minimum');
-
+        Schema::create('peripherals', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('brand');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->decimal('price', 10, 2);
+            $table->integer('stock');
+            $table->text('description');
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

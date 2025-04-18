@@ -6,28 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('cart', function (Blueprint $table) {
-            $table->id('id_cart');
+        Schema::create('carts', function (Blueprint $table) {
+            $table->id(); // Crea `id` como clave primaria estándar
             $table->enum('status', ['ESPERA', 'FINALIZADO', 'ABANDONADO']);
 
-            $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('user');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('cart_product');
-        Schema::dropIfExists('cart');
+        Schema::dropIfExists('carts');
     }
 };

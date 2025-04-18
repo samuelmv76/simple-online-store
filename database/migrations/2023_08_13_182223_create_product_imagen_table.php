@@ -6,27 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('product_imagen', function (Blueprint $table) {
-            $table->id('id_product_imagen');
+        Schema::create('product_images', function (Blueprint $table) {
+            $table->id();
             $table->text('url_imagen');
-
-            $table->unsignedBigInteger('id_product');
-            $table->foreign('id_product')->references('id_product')->on('product');
-
+        
+            $table->foreignId('peripheral_id')->constrained('peripherals')->onDelete('cascade');
+        
             $table->timestamps();
-        });
+        });        
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('product_imagen');
+        Schema::dropIfExists('product_images');
     }
 };

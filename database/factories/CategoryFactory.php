@@ -15,9 +15,12 @@ class CategoryFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'name' => fake()->word(),
-        ];
-    }
+        {
+            $categories = ['Mouse', 'Teclado', 'Auriculares', 'Monitor', 'Silla Gaming'];
+
+            return [
+                'name' => fake()->unique()->randomElement($categories),
+            ];
+        }
+
 }
