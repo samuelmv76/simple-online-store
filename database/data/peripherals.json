@@ -1,0 +1,200 @@
+[
+    {
+      "name": "Logitech G502 Hero",
+      "brand": "Logitech",
+      "category": "Mouse",
+      "price": 59.99,
+      "stock": 30,
+      "description": "Ratón gaming con sensor HERO 25K",
+      "image_url": "https://example.com/images/logitech-g502.jpg"
+    },
+    {
+      "name": "Corsair K95 RGB",
+      "brand": "Corsair",
+      "category": "Teclado",
+      "price": 129.99,
+      "stock": 20,
+      "description": "Teclado mecánico con retroiluminación RGB",
+      "image_url": "https://example.com/images/corsair-k95.jpg"
+    },
+    {
+      "name": "Razer DeathAdder V2",
+      "brand": "Razer",
+      "category": "Mouse",
+      "price": 49.99,
+      "stock": 40,
+      "description": "Ratón ergonómico con switches ópticos Razer",
+      "image_url": "https://example.com/images/razer-deathadder.jpg"
+    },
+    {
+      "name": "HyperX Cloud II",
+      "brand": "HyperX",
+      "category": "Auriculares",
+      "price": 99.99,
+      "stock": 35,
+      "description": "Auriculares con sonido envolvente 7.1",
+      "image_url": "https://example.com/images/hyperx-cloud-ii.jpg"
+    },
+    {
+      "name": "SteelSeries Apex Pro",
+      "brand": "SteelSeries",
+      "category": "Teclado",
+      "price": 179.99,
+      "stock": 25,
+      "description": "Teclado mecánico con switches ajustables",
+      "image_url": "https://example.com/images/apex-pro.jpg"
+    },
+    {
+      "name": "Asus ROG Swift PG27UQ",
+      "brand": "Asus",
+      "category": "Monitor",
+      "price": 1999.99,
+      "stock": 10,
+      "description": "Monitor 4K HDR de 27 pulgadas con G-Sync",
+      "image_url": "https://example.com/images/rog-swift.jpg"
+    },
+    {
+      "name": "Secretlab Titan Evo 2022",
+      "brand": "Secretlab",
+      "category": "Silla Gaming",
+      "price": 449.00,
+      "stock": 15,
+      "description": "Silla ergonómica premium para gaming",
+      "image_url": "https://example.com/images/secretlab-titan.jpg"
+    },
+    {
+      "name": "Cooler Master MM710",
+      "brand": "Cooler Master",
+      "category": "Mouse",
+      "price": 39.99,
+      "stock": 50,
+      "description": "Ratón ultra ligero con diseño perforado",
+      "image_url": "https://example.com/images/mm710.jpg"
+    },
+    {
+      "name": "Logitech G Pro X",
+      "brand": "Logitech",
+      "category": "Auriculares",
+      "price": 129.99,
+      "stock": 30,
+      "description": "Auriculares con micrófono Blue VO!CE",
+      "image_url": "https://example.com/images/g-pro-x.jpg"
+    },
+    {
+      "name": "MSI Optix MAG274QRF-QD",
+      "brand": "MSI",
+      "category": "Monitor",
+      "price": 399.99,
+      "stock": 18,
+      "description": "Monitor 165Hz con panel Rapid IPS",
+      "image_url": "https://example.com/images/msi-optix.jpg"
+    },
+    {
+      "name": "Corsair Virtuoso RGB Wireless",
+      "brand": "Corsair",
+      "category": "Auriculares",
+      "price": 179.99,
+      "stock": 22,
+      "description": "Auriculares inalámbricos con audio de alta fidelidad",
+      "image_url": "https://example.com/images/virtuoso.jpg"
+    },
+    {
+      "name": "Razer BlackWidow V3",
+      "brand": "Razer",
+      "category": "Teclado",
+      "price": 139.99,
+      "stock": 28,
+      "description": "Teclado mecánico con switches verdes Razer",
+      "image_url": "https://example.com/images/blackwidow-v3.jpg"
+    },
+    {
+      "name": "Gigabyte AORUS FI27Q",
+      "brand": "Gigabyte",
+      "category": "Monitor",
+      "price": 499.99,
+      "stock": 14,
+      "description": "Monitor QHD con 165Hz y FreeSync",
+      "image_url": "https://example.com/images/fi27q.jpg"
+    },
+    {
+      "name": "ASRock Phantom Gaming PG34WQ15R2B",
+      "brand": "ASRock",
+      "category": "Monitor",
+      "price": 349.99,
+      "stock": 12,
+      "description": "Monitor ultrawide curvo para gaming",
+      "image_url": "https://example.com/images/pg34.jpg"
+    },
+    {
+      "name": "Redragon K552 Kumara",
+      "brand": "Redragon",
+      "category": "Teclado",
+      "price": 39.99,
+      "stock": 60,
+      "description": "Teclado mecánico compacto económico",
+      "image_url": "https://example.com/images/k552.jpg"
+    },
+    {
+      "name": "Trust GXT 707R Resto",
+      "brand": "Trust",
+      "category": "Silla Gaming",
+      "price": 199.00,
+      "stock": 20,
+      "description": "Silla con reposabrazos ajustables",
+      "image_url": "https://example.com/images/gxt707r.jpg"
+    },
+    {
+      "name": "Newskill Nayuki",
+      "brand": "Newskill",
+      "category": "Silla Gaming",
+      "price": 179.00,
+      "stock": 25,
+      "description": "Silla con diseño ergonómico y respaldo reclinable",
+      "image_url": "https://example.com/images/nayuki.jpg"
+    },
+    {
+      "name": "Ozone Rage X40",
+      "brand": "Ozone",
+      "category": "Auriculares",
+      "price": 49.99,
+      "stock": 40,
+      "description": "Auriculares con sonido envolvente virtual 7.1",
+      "image_url": "https://example.com/images/rage-x40.jpg"
+    },
+    {
+      "name": "Roccat Kone Pro Air",
+      "brand": "Roccat",
+      "category": "Mouse",
+      "price": 89.99,
+      "stock": 25,
+      "description": "Ratón inalámbrico con iluminación RGB",
+      "image_url": "https://example.com/images/kone-pro.jpg"
+    },
+    {
+      "name": "ASUS TUF Gaming VG27AQ",
+      "brand": "ASUS",
+      "category": "Monitor",
+      "price": 429.99,
+      "stock": 17,
+      "description": "Monitor QHD 165Hz con ELMB Sync",
+      "image_url": "https://example.com/images/tuf-vg27.jpg"
+    },
+    {
+      "name": "Krom Kernel TKL",
+      "brand": "Krom",
+      "category": "Teclado",
+      "price": 44.95,
+      "stock": 45,
+      "description": "Teclado tenkeyless con switches mecánicos Outemu",
+      "image_url": "https://example.com/images/kernel-tkl.jpg"
+    },
+    {
+      "name": "Cougar Armor One",
+      "brand": "Cougar",
+      "category": "Silla Gaming",
+      "price": 179.00,
+      "stock": 20,
+      "description": "Silla con estructura de acero y cojines incluidos",
+      "image_url": "https://example.com/images/armor-one.jpg"
+    }
+  ]  
