@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/favicon.ico', function () {
+    return response()->file(public_path('favicon.ico'));
+});
 
 Route::get('/', [WelcomeController::class, 'show'])->name('welcome');
 Route::get('/cart', [CartController::class, 'show']);

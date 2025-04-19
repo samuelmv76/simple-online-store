@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Peripheral;
 use App\Models\User;
+use App\Models\ProductImagen;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Asegurar categorías
+        // Crear categorías
         $categories = ['Mouse', 'Teclado', 'Auriculares', 'Monitor', 'Silla Gaming'];
         foreach ($categories as $cat) {
             Category::firstOrCreate(['name' => $cat]);
@@ -23,21 +24,28 @@ class DatabaseSeeder extends Seeder
         $json = File::get(database_path('data/peripherals.json'));
         $peripherals = json_decode($json, true);
 
-        foreach ($peripherals as $item) {
+        foreach ($peripherals as $index => $item) {
             $category = Category::where('name', $item['category'])->first();
 
-            Peripheral::create([
+            $peripheral = Peripheral::create([
                 'name' => $item['name'],
                 'brand' => $item['brand'],
                 'category_id' => $category->id,
                 'price' => $item['price'],
                 'stock' => $item['stock'],
                 'description' => $item['description'],
-                'image_url' => $item['image_url'],
+            ]);
+
+            // Asociar imagen si existe (nombre generado automáticamente con índice)
+            $imagePath = "http://localhost:8000/storage/images/{$index}.jpg";
+
+            ProductImagen::create([
+                'peripheral_id' => $peripheral->id,
+                'url_imagen' => $imagePath
             ]);
         }
 
-        // Cargar usuarios desde JSON
+        // Insertar usuarios desde JSON
         $json = File::get(database_path('data/users.json'));
         $users = json_decode($json, true);
 

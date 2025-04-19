@@ -6,7 +6,7 @@ export function Footer() {
             width: '100%',
             height: '3.5rem'
           }}>
-            <div className="container">All rights reserved &copy; - 2023</div>
+            <div className="container">All rights reserved &copy; - 2025</div>
         </footer>
     );
 }

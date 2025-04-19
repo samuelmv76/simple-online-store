@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('stock');
             $table->text('description');
-            $table->string('image_url')->nullable();
+            //$table->string('image_url')->nullable();
             $table->timestamps();
         });
     }
@@ -29,7 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_imagen');
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('peripherals');
     }
+
 };

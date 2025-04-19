@@ -63,7 +63,7 @@ php artisan key:generate
 php artisan migrate:refresh --seed
 ```
 
-### Ejecutar estos 2 comandos para provar la Aplicación
+### Ejecutar estos 2 comandos para provar la Aplicación, ejecutar xampp Apache y MySQL
 
 ### 🚀 Ejecutar el servidor de desarrollo
 

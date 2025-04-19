@@ -2,10 +2,14 @@ import { useCart } from "../hook/useCart";
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 
 export function ProductCount({ product }) {
-    const { cart, decreaseAmount, addProductCart } = useCart()
+    const { cart, decreaseAmount, addProductCart } = useCart();
 
-    const productCart = cart.products.find(item => item.id_product === product.id_product)
-    const count = productCart !== undefined ? productCart.count : 1
+    const productCart = cart.products.find(item => item.id_product === product.id_product);
+
+    // No renderizar si el producto no está en el carrito
+    if (!productCart) return null;
+
+    const count = productCart.count;
 
     return (
         <div className="d-flex gap-1 align-items-center my-2 w-100">

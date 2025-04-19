@@ -16,7 +16,7 @@ export function Navbar() {
         }}>
             <div className="container">
                 <Link className="navbar-brand m-auto" href="/">
-                    Simple Online Store
+                    eSport-Gear
                 </Link>
 
                 <Search />
