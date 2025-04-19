@@ -9,6 +9,15 @@ class ProductImagen extends Model
 {
     use HasFactory;
 
-    protected $table = 'product_imagen';
-    protected $primaryKey = 'id_product_imagen';
+    protected $table = 'product_images';
+
+    protected $fillable = [
+        'url_imagen',
+        'peripheral_id',
+    ];
+
+    public function peripheral()
+    {
+        return $this->belongsTo(Peripheral::class);
+    }
 }
