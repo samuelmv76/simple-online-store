@@ -77,6 +77,8 @@ php artisan serve
 npm run dev
 ```
 
+### ----------------------------------------------------
+
 ### 🏗️ Generar versión de producción de React
 
 ```bash
