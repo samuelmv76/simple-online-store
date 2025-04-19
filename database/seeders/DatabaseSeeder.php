@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         $json = File::get(database_path('data/peripherals.json'));
         $peripherals = json_decode($json, true);
 
-        foreach ($peripherals as $index => $item) {
+        foreach ($peripherals as $item) {
             $category = Category::where('name', $item['category'])->first();
 
-            $peripheral = Peripheral::create([
+            Peripheral::create([
                 'name' => $item['name'],
                 'brand' => $item['brand'],
                 'category_id' => $category->id,
@@ -35,13 +35,16 @@ class DatabaseSeeder extends Seeder
                 'stock' => $item['stock'],
                 'description' => $item['description'],
             ]);
+        }
 
-            // Asociar imagen si existe (nombre generado automáticamente con índice)
-            $imagePath = "http://localhost:8000/storage/images/{$index}.jpg";
+        // Cargar imágenes desde JSON local
+        $jsonImages = File::get(database_path('data/peripherals_images.json'));
+        $images = json_decode($jsonImages, true);
 
+        foreach ($images as $img) {
             ProductImagen::create([
-                'peripheral_id' => $peripheral->id,
-                'url_imagen' => $imagePath
+                'peripheral_id' => $img['peripheral_id'],
+                'url_imagen' => $img['url_imagen']
             ]);
         }
 

@@ -1,15 +1,17 @@
 import { Link } from "@inertiajs/inertia-react";
 
 export function FindedProduct({ product, setShowResult }) {
+    const imageUrl = product?.product_imagen?.[0]?.url_imagen || '/storage/images/default-product.png';
+
+
     return (
-        <div
-            className="d-flex gap-2 border-bottom mb-1 pb-1"
-        >
+        <div className="d-flex gap-2 border-bottom mb-1 pb-1">
             <img
                 className="rounded"
-                src={product.product_imagen[0].url_imagen}
+                src={imageUrl}
                 height={50}
                 width={50}
+                alt={product.name}
             />
             <div className="d-flex flex-column">
                 <Link
