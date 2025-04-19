@@ -28,7 +28,6 @@ export default function Welcome({ productsPage, categories, products }) {
                     (filters.minPrice === 0 && filters.category === 'all') && (
                         <>
                             <Products products={productsPage.data} />
-
                             <div className="d-flex justify-content-center">
                                 <Pagination links={productsPage.links} />
                             </div>
@@ -36,10 +35,11 @@ export default function Welcome({ productsPage, categories, products }) {
                     )
                 }
 
-
                 {
-                    filteredProducts.length > 0 && (
-                        <Products products={filteredProducts} />
+                    (filters.minPrice !== 0 || filters.category !== 'all') && (
+                        filteredProducts.length > 0
+                            ? <Products products={filteredProducts} />
+                            : <p className="text-center mt-4">No hay productos que coincidan con los filtros</p>
                     )
                 }
             </div>

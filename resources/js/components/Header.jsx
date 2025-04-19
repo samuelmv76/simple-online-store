@@ -1,25 +1,64 @@
-import { Filters } from "./Filters";
-
-import Banner from '../../images/banner-ecommerce.webp'
-import './Header.css'
+import { useFilters } from "../hook/useFilters";
 
 export function Header() {
+    const { filters, setFilters, categories } = useFilters();
+
+    const handleMinChange = (e) => {
+        const value = parseFloat(e.target.value) || 0;
+        setFilters(prev => ({ ...prev, minPrice: value }));
+    };
+
+    const handleMaxChange = (e) => {
+        const value = parseFloat(e.target.value) || Infinity;
+        setFilters(prev => ({ ...prev, maxPrice: value }));
+    };
+
+    const handleCategoryChange = (e) => {
+        setFilters(prev => ({ ...prev, category: e.target.value }));
+    };
+
     return (
-        <>
-            <div
-                className="bg-secondary rounded position-relative banner-ecommerce"
-            >
-                <img className="rounded shadow position-absolute" src={Banner} alt="banner e-commerce" style={{
-                    width: '100%',
-                    height: '100%'
-                }} />
-
-                <h1 className="position-absolute text-white ms-4 mt-4 ms-md-5 mt-md-5 w-50 fw-bolder">
-                    Compra fácil, sonríe siempre. ¡Descúbrelo ahora!
-                </h1>
+        <div className="d-flex flex-wrap gap-3 align-items-center p-3">
+            <div>
+                <label htmlFor="minPrice">Precio mínimo</label>
+                <input
+                    id="minPrice"
+                    type="number"
+                    className="form-control"
+                    value={filters.minPrice}
+                    onChange={handleMinChange}
+                    placeholder="Mín"
+                    min="0"
+                />
             </div>
-
-            <Filters />
-        </>
+            <div>
+                <label htmlFor="maxPrice">Precio máximo</label>
+                <input
+                    id="maxPrice"
+                    type="number"
+                    className="form-control"
+                    value={filters.maxPrice === Infinity ? '' : filters.maxPrice}
+                    onChange={handleMaxChange}
+                    placeholder="Máx"
+                    min="0"
+                />
+            </div>
+            <div>
+                <label htmlFor="category">Categoría</label>
+                <select
+                    id="category"
+                    className="form-select"
+                    value={filters.category}
+                    onChange={handleCategoryChange}
+                >
+                    <option value="all">Todos</option>
+                    {categories.map((cat) => (
+                        <option key={`${cat.id_category}-${cat.name}`} value={cat.name}>
+                            {cat.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+        </div>
     );
 }
