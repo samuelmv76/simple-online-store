@@ -1,8 +1,7 @@
 import { Link } from "@inertiajs/inertia-react";
 
 export function FindedProduct({ product, setShowResult }) {
-    const imageUrl = product?.product_imagen?.[0]?.url_imagen || '/storage/images/default-product.png';
-
+    const imageUrl = product?.images?.[0]?.url_imagen || '/storage/images/default-product.png';
 
     return (
         <div className="d-flex gap-2 border-bottom mb-1 pb-1">
@@ -16,7 +15,7 @@ export function FindedProduct({ product, setShowResult }) {
             <div className="d-flex flex-column">
                 <Link
                     className="text-capitalize"
-                    href={`/products/${product.id_product}`}
+                    href={`/products/${product.id}`} // CORREGIDO
                     onClick={() => setShowResult(false)}
                 >
                     {product.name}

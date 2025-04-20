@@ -11,9 +11,9 @@ class WelcomeController extends Controller
 {
     public function show(Request $request)
     {
-        $productsPage = Peripheral::with('images')->with('category')->orderBy('id')->paginate(8);
+        $productsPage = Peripheral::with('images', 'category')->orderBy('id')->paginate(8);
+        $products = Peripheral::with('images', 'category')->get();
         $categories = Category::all();
-        $products = Peripheral::with('images')->with('category')->get();
 
         return Inertia::render('Welcome', [
             'productsPage' => $productsPage,

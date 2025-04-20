@@ -10,25 +10,21 @@ use Inertia\Inertia;
 class ProductController extends Controller
 {
     public function getProduct($product_id, Request $request)
-{
-    $product_target = Peripheral::with('images')->with('category')->find($product_id);
+    {
+        $product_target = Peripheral::with('images', 'category')->find($product_id);
 
-    // Verifica si el producto no existe
-    if (!$product_target) {
-        abort(404, 'Producto no encontrado');
+        if (!$product_target) {
+            abort(404, 'Producto no encontrado');
+        }
+
+        $products_similars = Peripheral::with('images', 'category')
+            ->where('category_id', $product_target->category_id)
+            ->where('id', '!=', $product_target->id)
+            ->get();
+
+        return Inertia::render('Products/ProductDetail', [
+            'product' => $product_target,
+            'productsSimilars' => $products_similars
+        ]);
     }
-
-    $products = Peripheral::with('images')->with('category')->get();
-
-    $products_similars = $products
-        ->filter(fn($product) => $product->category_id === $product_target->category_id)
-        ->filter(fn($product) => $product->id !== $product_target->id)
-        ->values();
-
-    return Inertia::render('Products/ProductDetail', [
-        'product' => $product_target,
-        'productsSimilars' => $products_similars
-    ]);
-}
-
 }
