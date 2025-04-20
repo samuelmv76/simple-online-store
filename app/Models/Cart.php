@@ -10,10 +10,11 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $table = 'cart';
-    protected $primaryKey = 'id_cart';
+    protected $table = 'carts'; // también aquí debe ser en plural si usas convenciones
+    protected $primaryKey = 'id';
 
-    public function cartProduct() : HasMany {
-        return $this->hasMany(CartProduct::class, 'id_cart')->with('product');
+    public function cartProduct(): HasMany
+    {
+        return $this->hasMany(CartProduct::class, 'cart_id');
     }
 }

@@ -9,18 +9,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->id(); // Crea `id` como clave primaria estándar
+            $table->id(); // 'id' será clave primaria estándar
             $table->enum('status', ['ESPERA', 'FINALIZADO', 'ABANDONADO']);
-
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // relación estándar
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('cart_product');
+        Schema::dropIfExists('cart_product'); // si quieres puedes quitar esto, ya se borra con su migración
         Schema::dropIfExists('carts');
     }
 };

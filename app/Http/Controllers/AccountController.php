@@ -15,31 +15,31 @@ class AccountController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string',
-        'surname' => 'required|string',
-        'email' => 'required|unique:users,email|email',
-        'password' => 'required|string'
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'email' => 'required|unique:users,email|email',
+            'password' => 'required|string'
+        ]);
 
-    $user = new User();
-    $user->name = $request->name;
-    $user->surname = $request->surname;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->save();
+        $user = new User();
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
 
-    $token = $user->createToken("API TOKEN")->plainTextToken;
+        $token = $user->createToken("API TOKEN")->plainTextToken;
 
-    return response()->json([
-        'message' => 'Creado con exito',
-        'data' => [
-            'user' => $user,
-            'token' => $token
-        ]
-    ], 201);
-}
+        return response()->json([
+            'message' => 'Creado con exito',
+            'data' => [
+                'user' => $user,
+                'token' => $token
+            ]
+        ], 201);
+    }
 
     public function update(Request $request)
     {
@@ -51,10 +51,10 @@ class AccountController extends Controller
 
         $current_user = $request->user();
 
-        $user = User::where('id_user', '=', $current_user->id_user)->first();
+        $user = User::find($current_user->id);
 
         if (
-            User::where('id_user', '<>', $current_user->id_user)
+            User::where('id', '<>', $current_user->id)
                 ->where('email', '=', $request->email)
                 ->first()
         ) {
@@ -64,7 +64,8 @@ class AccountController extends Controller
             ], 400);
         }
 
-        $user->name = "{$request->name} {$request->lastName}";
+        $user->name = $request->name;
+        $user->surname = $request->lastName;
         $user->email = $request->email;
         $user->update();
 

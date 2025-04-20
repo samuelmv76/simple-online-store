@@ -11,11 +11,13 @@ return new class extends Migration
         Schema::create('cart_product', function (Blueprint $table) {
             $table->id();
 
-            // Relación con peripherals
-            $table->foreignId('peripheral_id')->constrained('peripherals')->onDelete('cascade');
+            // Clave foránea hacia peripherals.id
+            $table->unsignedBigInteger('peripheral_id');
+            $table->foreign('peripheral_id')->references('id')->on('peripherals')->onDelete('cascade');
 
-            // Relación con carts
-            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade');
+            // Clave foránea hacia carts.id
+            $table->unsignedBigInteger('cart_id');
+            $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
 
             $table->integer('count_product');
             $table->float('price_product');
