@@ -53,7 +53,7 @@ export function Header() {
                 >
                     <option value="all">Todos</option>
                     {categories.map((cat) => (
-                        <option key={`${cat.id_category}-${cat.name}`} value={cat.name}>
+                        <option key={cat.id_category} value={cat.name.toLowerCase().trim()}>
                             {cat.name}
                         </option>
                     ))}

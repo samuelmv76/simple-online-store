@@ -18,6 +18,11 @@ export default function Welcome({ productsPage, categories, products }) {
         setCategories(categories)
         setProducts(products)
     }, [])
+        // 👇 DEBUG
+        console.log("Categoría seleccionada:", filters.category)
+        products.forEach(p =>
+            console.log("Producto:", p.name, "| Categoría:", p?.category?.name)
+        )
 
     return (
         <>

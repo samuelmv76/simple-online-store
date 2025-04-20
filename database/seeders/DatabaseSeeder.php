@@ -14,10 +14,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Crear categorías
+        // Crear categorías normalizadas
         $categories = ['Mouse', 'Teclado', 'Auriculares', 'Monitor', 'Silla Gaming'];
         foreach ($categories as $cat) {
-            Category::firstOrCreate(['name' => $cat]);
+            Category::firstOrCreate([
+                'name' => ucfirst(strtolower(trim($cat)))
+            ]);
         }
 
         // Cargar periféricos desde JSON
@@ -25,12 +27,13 @@ class DatabaseSeeder extends Seeder
         $peripherals = json_decode($json, true);
 
         foreach ($peripherals as $item) {
-            $category = Category::where('name', $item['category'])->first();
+            $categoryName = ucfirst(strtolower(trim($item['category'])));
+            $category = Category::where('name', $categoryName)->first();
 
             Peripheral::create([
                 'name' => $item['name'],
                 'brand' => $item['brand'],
-                'category_id' => $category->id,
+                'category_id' => $category->id ?? null,
                 'price' => $item['price'],
                 'stock' => $item['stock'],
                 'description' => $item['description'],
@@ -57,6 +60,7 @@ class DatabaseSeeder extends Seeder
                 'email' => $userData['email']
             ], [
                 'name' => $userData['name'],
+                'surname' => $userData['surname'] ?? '',
                 'password' => Hash::make($userData['password']),
                 'rol' => $userData['rol'],
             ]);

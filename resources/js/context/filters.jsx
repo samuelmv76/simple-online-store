@@ -1,11 +1,12 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from 'react';
 
-export const FiltersContext = createContext()
+export const FiltersContext = createContext();
 
 export function FiltersProvider({ children }) {
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState({
         minPrice: 0,
+        maxPrice: Infinity,
         category: "all",
     });
 
@@ -15,9 +16,8 @@ export function FiltersProvider({ children }) {
             setFilters,
             categories,
             setCategories
-        }}
-        >
+        }}>
             {children}
         </FiltersContext.Provider>
-    )
+    );
 }

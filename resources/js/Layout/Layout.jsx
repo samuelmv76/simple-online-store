@@ -4,14 +4,15 @@ import { Signin } from "./Signin";
 
 export function Layout({ children }) {
     return (
-        <div
-            style={{
-                position: "relative",
-                minHeight: "100vh",
-            }}
-        >
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh'
+        }}>
             <Navbar />
-            <div className="container mt-4 pb-5">{children}</div>
+            <main className="container mt-4 flex-grow-1">
+                {children}
+            </main>
             <Footer />
             <Signin />
         </div>

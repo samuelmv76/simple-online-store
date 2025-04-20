@@ -10,10 +10,10 @@ export function useFilters() {
             product.price <= filters.maxPrice &&
             (
                 filters.category === 'all' ||
-                product.category.name === filters.category
+                product.category?.name?.toLowerCase().trim() === filters.category.toLowerCase().trim()
             )
         );
-        
-    }
+    }    
+
     return { filtersProducts, filters, setFilters, categories, setCategories }
 }
