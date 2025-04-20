@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Peripheral;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -27,4 +28,26 @@ class ProductController extends Controller
             'productsSimilars' => $products_similars
         ]);
     }
+
+    public function adminIndex()
+    {
+        $products = Peripheral::with('images', 'category')->get();
+
+        return Inertia::render('Admin/ManagePeripherals', [
+            'peripherals' => $products
+        ]);
+    }
+    public function updateStock(Request $request, $id)
+    {
+        $request->validate([
+            'stock' => 'required|integer|min:0'
+        ]);
+
+        $product = Peripheral::findOrFail($id);
+        $product->stock = $request->stock;
+        $product->save();
+
+        return redirect()->route('admin.peripherals');
+    }
+        
 }

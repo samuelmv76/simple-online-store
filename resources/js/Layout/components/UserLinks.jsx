@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/inertia-react";
-import { CiUser, CiPower, CiShoppingBasket, CiViewTimeline } from "react-icons/ci";
+import { CiUser, CiPower, CiShoppingBasket, CiViewTimeline, CiSettings } from "react-icons/ci";
 
 export function UserLinks({ user, token, logout }) {
     const header = { Authorization: `Bearer ${token}` }
@@ -21,9 +21,7 @@ export function UserLinks({ user, token, logout }) {
                             <h2 className="fs-6 mb-0">{user.name}</h2>
                             <div
                                 className="text-secondary fw-light"
-                                style={{
-                                    fontSize: ".8rem",
-                                }}
+                                style={{ fontSize: ".8rem" }}
                             >
                                 {user.email}
                             </div>
@@ -31,38 +29,44 @@ export function UserLinks({ user, token, logout }) {
                             <Link
                                 className="btn fw-semibold p-0 d-flex gap-1 mt-1 align-items-center"
                                 headers={header}
-                                style={{
-                                    fontSize: ".93rem",
-                                }}
+                                style={{ fontSize: ".93rem" }}
                                 href="/orders"
                             >
                                 <CiShoppingBasket className="fs-5" />
-                                <span className="fw-light">Ordenes</span>
+                                <span className="fw-light">Órdenes</span>
                             </Link>
 
                             <Link
                                 className="btn fw-semibold p-0 d-flex gap-1 mt-1 align-items-center"
                                 headers={header}
-                                style={{
-                                    fontSize: ".93rem",
-                                }}
+                                style={{ fontSize: ".93rem" }}
                                 href="/profile"
                             >
                                 <CiViewTimeline className="fs-5" />
                                 <span className="fw-light">Perfil</span>
                             </Link>
+
+                            {user.rol === "admin" && (
+                                <Link
+                                    className="btn fw-semibold p-0 d-flex gap-1 mt-1 align-items-center text-danger"
+                                    headers={header}
+                                    style={{ fontSize: ".93rem" }}
+                                    href="/admin/peripherals"
+                                >
+                                    <CiSettings className="fs-5" />
+                                    <span className="fw-light">Panel Admin</span>
+                                </Link>
+                            )}
                         </div>
                     </li>
                     <li>
                         <button
                             className="btn fw-semibold mx-3 p-0 d-flex gap-1 mt-1 align-items-center"
-                            style={{
-                                fontSize: ".93rem",
-                            }}
+                            style={{ fontSize: ".93rem" }}
                             type="button"
                             onClick={async () => {
-                                await logout()
-                                window.location.reload()
+                                await logout();
+                                window.location.reload();
                             }}
                         >
                             <CiPower className="fs-5" />
