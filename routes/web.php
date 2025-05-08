@@ -25,9 +25,12 @@ Route::middleware('auth:sanctum')->prefix('orders')->group(function () {
     Route::get('/{id_cart}', [CartController::class, 'getOrderById']);
 });
 
-Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/peripherals', [ProductController::class, 'adminIndex'])->name('admin.peripherals');
+Route::middleware(['auth:sanctum','admin'])
+  ->prefix('admin')
+  ->group(function () {
+    Route::get('/peripherals', [ProductController::class, 'adminIndex'])
+         ->name('admin.peripherals');
 
-    Route::post('/peripherals/{id}', [ProductController::class, 'updateStock'])
-    ->name('admin.peripherals.update');
-});
+    Route::put('/peripherals/{id}', [ProductController::class, 'updateStock'])
+         ->name('admin.peripherals.update');
+  });

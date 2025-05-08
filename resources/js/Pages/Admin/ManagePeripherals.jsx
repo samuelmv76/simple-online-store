@@ -10,7 +10,7 @@ export default function ManagePeripherals({ peripherals = [] }) {
         }, {})
     );
 
-    const { post } = useForm();
+    const { put } = useForm();
 
     const handleEdit = (id) => {
         setEditing(id);
@@ -35,14 +35,13 @@ export default function ManagePeripherals({ peripherals = [] }) {
             return;
         }
 
-        post(`/admin/peripherals/${id}`, {
-            _method: 'put',
-            stock,
-            preserveScroll: true,
-            preserveState: true,
-            onSuccess: () => setEditing(null),
-            onError: () => alert("Error al actualizar el stock")
-        });
+        put(`/admin/peripherals/${id}`, {
+         stock,
+         preserveScroll: true,
+         preserveState: true,
+         onSuccess: () => setEditing(null),
+         onError:   () => alert("Error al actualizar el stock")
+       });
     };
 
     return (
