@@ -4,7 +4,6 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/favicon.ico', function () {
@@ -28,5 +27,7 @@ Route::middleware('auth:sanctum')->prefix('orders')->group(function () {
 
 Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
     Route::get('/peripherals', [ProductController::class, 'adminIndex'])->name('admin.peripherals');
-    Route::post('/peripherals/{id}', [ProductController::class, 'updateStock'])->name('admin.peripherals.update');
+
+    Route::post('/peripherals/{id}', [ProductController::class, 'updateStock'])
+    ->name('admin.peripherals.update');
 });

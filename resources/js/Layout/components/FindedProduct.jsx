@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 
 export function FindedProduct({ product, setShowResult }) {
     const imageUrl = product?.images?.[0]?.url_imagen || '/storage/images/default-product.png';

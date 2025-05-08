@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Inertia } from "@inertiajs/inertia";
+import { useForm } from "@inertiajs/react";
 
 export default function ManagePeripherals({ peripherals = [] }) {
     const [editing, setEditing] = useState(null);
     const [stockValues, setStockValues] = useState(
-        Array.isArray(peripherals)
-            ? peripherals.reduce((acc, p) => {
-                acc[p.id] = p.stock;
-                return acc;
-            }, {})
-            : {}
+        peripherals.reduce((acc, p) => {
+            acc[p.id] = p.stock;
+            return acc;
+        }, {})
     );
+
+    const { post } = useForm();
 
     const handleEdit = (id) => {
         setEditing(id);
@@ -27,7 +27,7 @@ export default function ManagePeripherals({ peripherals = [] }) {
         }));
     };
 
-    const handleSave = async (id) => {
+    const handleSave = (id) => {
         const stock = parseInt(stockValues[id]);
 
         if (isNaN(stock) || stock < 0) {
@@ -35,18 +35,14 @@ export default function ManagePeripherals({ peripherals = [] }) {
             return;
         }
 
-        try {
-            await Inertia.post(`/admin/peripherals/${id}`, {
-                _method: 'put', // Laravel entenderá que es un PUT
-                stock
-            }, {
-                preserveScroll: true,
-                onSuccess: () => setEditing(null),
-                onError: () => alert("Error al actualizar el stock")
-            });            
-        } catch (err) {
-            alert("Error al actualizar el stock");
-        }
+        post(`/admin/peripherals/${id}`, {
+            _method: 'put',
+            stock,
+            preserveScroll: true,
+            preserveState: true,
+            onSuccess: () => setEditing(null),
+            onError: () => alert("Error al actualizar el stock")
+        });
     };
 
     return (

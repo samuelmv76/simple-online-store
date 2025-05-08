@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Peripheral;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -39,15 +38,14 @@ class ProductController extends Controller
     }
     public function updateStock(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'stock' => 'required|integer|min:0'
         ]);
-
+    
         $product = Peripheral::findOrFail($id);
-        $product->stock = $request->stock;
+        $product->stock = $validated['stock'];
         $product->save();
-
-        return redirect()->route('admin.peripherals');
-    }
-        
+    
+        return back(303); // Esto evita que Inertia haga redirección extraña
+    }       
 }

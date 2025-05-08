@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 import { CiUser, CiPower, CiShoppingBasket, CiViewTimeline, CiSettings } from "react-icons/ci";
 
 export function UserLinks({ user, token, logout }) {

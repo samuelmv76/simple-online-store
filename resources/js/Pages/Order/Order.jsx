@@ -1,5 +1,5 @@
 import { CiCircleChevRight } from "react-icons/ci";
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 import { useAuth } from "../../hook/useAuth";
 import { useCart } from "../../hook/useCart";
 import { getFormatDate } from "../../utils/helpers";

@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 import { useCart } from "../../hook/useCart";
 
 import { getFormatDate } from "../../utils/helpers";

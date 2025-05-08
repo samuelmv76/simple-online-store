@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 import { useAuth } from "../hook/useAuth";
 import { Search } from "./components/Search";
 import { UserLinks } from "./components/UserLinks";

@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 import { useState } from 'react';
 import { flushSync } from 'react-dom';
 import { useCart } from "../../hook/useCart";

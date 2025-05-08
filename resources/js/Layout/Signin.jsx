@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/inertia-react";
+import { Link } from "@inertiajs/react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string } from "yup";
